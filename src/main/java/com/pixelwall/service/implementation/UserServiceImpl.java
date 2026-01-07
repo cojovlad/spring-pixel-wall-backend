@@ -20,8 +20,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<User> getUserById(Long id) {
+    public Optional<User> getUserById(Integer id) {
         return userRepository.findById(id);
+    }
+
+    public Optional<User> getUserByDisplayName(String displayName) {
+        return Optional.ofNullable(userRepository.findByDisplayName(displayName));
     }
 
     @Override
@@ -50,7 +54,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteUserById(Long id) {
+    public void deleteUserById(Integer id) {
         userRepository.deleteById(id);
     }
 }
